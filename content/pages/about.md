@@ -12,6 +12,9 @@ I specialize in building production-grade machine learning systems. My work span
 
 I'm particularly interested in **ML systems design** and **scalable pipelines**, making models not just accurate, but reliable and maintainable in production.
 
+- Specialization: Machine Learning, Artifical Inteligence
+- Freelance: Currently available
+
 ## Technical Stack
 
 **ML & Data Science**: Python, PyTorch, scikit-learn, XGBoost, Polars, Transformers, LangChain/LlamaIndex (RAG & Agentic workflows), Vector Databases (ChromaDB), NumPy, SciPy, Statsmodels.
