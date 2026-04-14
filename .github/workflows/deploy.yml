@@ -1,0 +1,83 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create production .env
+        run: |
+          cat > .env << 'EOF'
+          # Site Configuration
+          AUTHOR_NAME=Jorge Nacer
+          SITE_NAME=Jorge Nacer — Data Scientist & ML Engineer
+          SITE_URL=https://***REMOVED***
+
+          # Personal Information
+          PROFILE_EMAIL=***REMOVED***
+          PROFILE_LOCATION=Hamburg, Germany
+          PROFILE_STATUS=Open to Opportunities
+
+          # Social Media
+          GITHUB_USERNAME=on1link
+          GITHUB_URL=https://github.com/on1link
+          GITLAB_USERNAME=***REMOVED***
+          GITLAB_URL=https://gitlab.com/***REMOVED***
+          LINKEDIN_USERNAME=***REMOVED***
+          LINKEDIN_URL=https://linkedin.com/in/***REMOVED***
+          DISCORD_USERNAME=on1link
+          DISCORD_URL=https://discord.com/users/on1link
+
+          # Legal
+          BUSINESS_NAME=Jorge Nacer
+          BUSINESS_ADDRESS=Hamburg 22303, Germany
+          BUSINESS_EMAIL=***REMOVED***
+
+          # CV/Resume
+          CV_DOWNLOAD_PATH=/cv.pdf
+
+          # Domain Configuration
+          PRODUCTION_DOMAIN=***REMOVED***
+          CUSTOM_DOMAIN_ENABLED=true
+          EOF
+
+      - name: Build site
+        run: pelican content -s pelicanconf.py
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
