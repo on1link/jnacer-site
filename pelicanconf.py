@@ -74,10 +74,6 @@ EXTRA_CONTEXT = {
     "profile_location": os.getenv("PROFILE_LOCATION", "Hamburg, Germany"),
     "profile_status": os.getenv("PROFILE_STATUS", "Open to Opportunities"),
     # Social media links and usernames (for footer icons)
-    "github_username": os.getenv("GITHUB_USERNAME", ""),
-    "github_url": os.getenv("GITHUB_URL", ""),
-    "gitlab_username": os.getenv("GITLAB_USERNAME", ""),
-    "gitlab_url": os.getenv("GITLAB_URL", ""),
     "gh_username": os.getenv("GH_USERNAME", ""),
     "gh_url": os.getenv("GH_URL", ""),
     "gl_username": os.getenv("GL_USERNAME", ""),
