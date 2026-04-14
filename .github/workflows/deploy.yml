@@ -43,10 +43,10 @@ jobs:
           PROFILE_STATUS=${{ secrets.PROFILE_STATUS }}
 
           # Social Media
-          GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }}
-          GITHUB_URL=${{ secrets.GITHUB_URL }}
-          GITLAB_USERNAME=${{ secrets.GITLAB_USERNAME }}
-          GITLAB_URL=${{ secrets.GITLAB_URL }}
+          GITHUB_USERNAME=${{ secrets.GH_USERNAME }}
+          GITHUB_URL=${{ secrets.GH_URL }}
+          GITLAB_USERNAME=${{ secrets.GL_USERNAME }}
+          GITLAB_URL=${{ secrets.GL_URL }}
           LINKEDIN_USERNAME=${{ secrets.LINKEDIN_USERNAME }}
           LINKEDIN_URL=${{ secrets.LINKEDIN_URL }}
           DISCORD_USERNAME=${{ secrets.DISCORD_USERNAME }}
