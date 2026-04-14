@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero__content">
+        <div class="hero__tag">Machine Learning Engineer · Data Scientist</div>
+        <h1 class="hero__title">Building <span class="hero__accent">high-performance</span> ML systems.</h1>
+        <p class="hero__sub">Combining scientific rigor with production-grade engineering. Specializing in infrastructure, NLP pipelines, and scalable systems.</p>
+        <div class="hero__cta">
+            <a href="{{ SITEURL }}/projects/" class="btn btn--primary">View Projects</a>
+            <a href="#" class="btn btn--ghost">Get Resume (PDF)</a>
+        </div>
+    </div>
+</section>
+
+<section class="stack">
+    <h2 class="stack__title">Technical Stack</h2>
+    <div class="bento">
+        <div class="bento__item">
+            <div class="bento__label">Languages</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Python</span>
+                <span class="bento__tag">Rust</span>
+                <span class="bento__tag">Bash</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Core ML & Data</div>
+            <div class="bento__tags">
+                <span class="bento__tag">PyTorch</span>
+                <span class="bento__tag">Snowflake</span>
+                <span class="bento__tag">Spark</span>
+                <span class="bento__tag">Pandas</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Platform</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Kubernetes</span>
+                <span class="bento__tag">Docker</span>
+                <span class="bento__tag">AWS</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Streaming & Ops</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Kafka</span>
+                <span class="bento__tag">MLflow</span>
+                <span class="bento__tag">Airflow</span>
+            </div>
+        </div>
+
+        <div class="bento__item bento__item--wide">
+            <div class="bento__label">Open Source Contributions</div>
+            <p style="font-size: 0.95rem; color: var(--text-dim); margin-top: 0.75rem;">Active contributor to ML infrastructure and data engineering projects. See GitHub for details on recent work.</p>
+            <a href="https://github.com/on1link" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: underline;">→ View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section class="projects">
+    <h2 class="stack__title">Featured Project</h2>
+
+    <div class="project">
+        <div class="project__diagram">
+            <svg viewBox="0 0 300 300" style="width: 100%; max-width: 200px; opacity: 0.6;">
+                <defs>
+                    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:currentColor;stop-opacity:0.1" />
+                    </linearGradient>
+                </defs>
+                <!-- Tree structure -->
+                <circle cx="150" cy="50" r="20" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
+                <text x="150" y="55" text-anchor="middle" font-size="10" fill="currentColor">T1</text>
+
+                <circle cx="90" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
+                <text x="90" y="135" text-anchor="middle" font-size="9" fill="currentColor">T2</text>
+
+                <circle cx="150" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
+                <text x="150" y="135" text-anchor="middle" font-size="9" fill="currentColor">T3</text>
+
+                <circle cx="210" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
+                <text x="210" y="135" text-anchor="middle" font-size="9" fill="currentColor">T4</text>
+
+                <!-- Connections -->
+                <line x1="140" y1="70" x2="100" y2="115" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
+                <line x1="150" y1="70" x2="150" y2="112" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
+                <line x1="160" y1="70" x2="200" y2="115" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
+
+                <!-- Progression nodes -->
+                <circle cx="60" cy="200" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+                <circle cx="120" cy="220" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+                <circle cx="180" cy="220" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+                <circle cx="240" cy="200" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+            </svg>
+        </div>
+        <div class="project__content">
+            <h3>Synthesis Overthrust</h3>
+            <div class="project__stack">Tauri 2.0 · Rust · React · TypeScript · FastAPI</div>
+            <p class="project__description">Gamified learning platform with structured skill-tree covering complete ML/Data roles. Organizes skills across professional tracks with spaced-repetition methodology inspired by RPG progression systems. Features six seniority tiers with prerequisite dependencies and milestone celebrations.</p>
+            <div class="project__metrics">
+                <div class="project__metric">
+                    <div class="project__metric-label">Tracks</div>
+                    <div class="project__metric-value">6 Tiers (T1-T5)</div>
+                </div>
+                <div class="project__metric">
+                    <div class="project__metric-label">License</div>
+                    <div class="project__metric-value">AGPLv3</div>
+                </div>
+            </div>
+            <a href="https://github.com/on1link/SynthesisOverthrust" target="_blank" rel="noopener" class="project__link">View on GitHub →</a>
+        </div>
+    </div>
+</section>
+
+{% if articles %}
+<section class="recent-posts">
+    <h2 class="stack__title">Latest Writing</h2>
+    {% for article in articles[:4] %}
+    <a href="{{ SITEURL }}/{{ article.url }}" class="post-preview">
+        <time class="post-preview__date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d, %Y') }}</time>
+        <h3 class="post-preview__title">{{ article.title }}</h3>
+        <p class="post-preview__summary">{{ article.summary|striptags|truncate(140) }}</p>
+    </a>
+    {% endfor %}
+</section>
+{% endif %}
+{% endblock %}
