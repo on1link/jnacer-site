@@ -31,36 +31,36 @@ jobs:
         run: |
           cat > .env << 'EOF'
           # Site Configuration
-          AUTHOR_NAME=Jorge Nacer
-          SITE_NAME=Jorge Nacer — Data Scientist & ML Engineer
-          SITE_URL=https://***REMOVED***
+          AUTHOR_NAME=${{ secrets.AUTHOR_NAME }}
+          SITE_NAME=${{ secrets.SITE_NAME }}
+          SITE_URL=${{ secrets.SITE_URL }}
 
           # Personal Information
-          PROFILE_EMAIL=***REMOVED***
-          PROFILE_LOCATION=Hamburg, Germany
-          PROFILE_STATUS=Open to Opportunities
+          PROFILE_EMAIL=${{ secrets.PROFILE_EMAIL }}
+          PROFILE_LOCATION=${{ secrets.PROFILE_LOCATION }}
+          PROFILE_STATUS=${{ secrets.PROFILE_STATUS }}
 
           # Social Media
-          GITHUB_USERNAME=on1link
-          GITHUB_URL=https://github.com/on1link
-          GITLAB_USERNAME=***REMOVED***
-          GITLAB_URL=https://gitlab.com/***REMOVED***
-          LINKEDIN_USERNAME=***REMOVED***
-          LINKEDIN_URL=https://linkedin.com/in/***REMOVED***
-          DISCORD_USERNAME=on1link
-          DISCORD_URL=https://discord.com/users/on1link
+          GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }}
+          GITHUB_URL=${{ secrets.GITHUB_URL }}
+          GITLAB_USERNAME=${{ secrets.GITLAB_USERNAME }}
+          GITLAB_URL=${{ secrets.GITLAB_URL }}
+          LINKEDIN_USERNAME=${{ secrets.LINKEDIN_USERNAME }}
+          LINKEDIN_URL=${{ secrets.LINKEDIN_URL }}
+          DISCORD_USERNAME=${{ secrets.DISCORD_USERNAME }}
+          DISCORD_URL=${{ secrets.DISCORD_URL }}
 
           # Legal
-          BUSINESS_NAME=Jorge Nacer
-          BUSINESS_ADDRESS=Hamburg 22303, Germany
-          BUSINESS_EMAIL=***REMOVED***
+          BUSINESS_NAME=${{ secrets.BUSINESS_NAME }}
+          BUSINESS_ADDRESS=${{ secrets.BUSINESS_ADDRESS }}
+          BUSINESS_EMAIL=${{ secrets.BUSINESS_EMAIL }}
 
           # CV/Resume
-          CV_DOWNLOAD_PATH=/cv.pdf
+          CV_DOWNLOAD_PATH=${{ secrets.CV_DOWNLOAD_PATH }}
 
           # Domain Configuration
-          PRODUCTION_DOMAIN=***REMOVED***
-          CUSTOM_DOMAIN_ENABLED=true
+          PRODUCTION_DOMAIN=${{ secrets.PRODUCTION_DOMAIN }}
+          CUSTOM_DOMAIN_ENABLED=${{ secrets.CUSTOM_DOMAIN_ENABLED }}
           EOF
 
       - name: Build site
