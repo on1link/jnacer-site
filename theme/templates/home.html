@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <!-- Neural Network Background -->
+    <svg class="hero__bg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <style>
+                @keyframes float {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 0.6; }
+                }
+                .node { animation: float 4s ease-in-out infinite; }
+                .node:nth-child(1) { animation-delay: 0s; }
+                .node:nth-child(2) { animation-delay: 0.3s; }
+                .node:nth-child(3) { animation-delay: 0.6s; }
+                .node:nth-child(4) { animation-delay: 0.9s; }
+                .node:nth-child(5) { animation-delay: 1.2s; }
+                .node:nth-child(6) { animation-delay: 1.5s; }
+                .node:nth-child(7) { animation-delay: 1.8s; }
+                .node:nth-child(8) { animation-delay: 2.1s; }
+            </style>
+        </defs>
+        <!-- Connections -->
+        <line x1="150" y1="100" x2="350" y2="200" stroke="rgba(88,166,255,0.2)" stroke-width="1" />
+        <line x1="150" y1="100" x2="500" y2="150" stroke="rgba(88,166,255,0.15)" stroke-width="1" />
+        <line x1="350" y1="200" x2="600" y2="300" stroke="rgba(88,166,255,0.2)" stroke-width="1" />
+        <line x1="350" y1="200" x2="700" y2="400" stroke="rgba(88,166,255,0.15)" stroke-width="1" />
+        <line x1="500" y1="150" x2="700" y2="400" stroke="rgba(88,166,255,0.2)" stroke-width="1" />
+        <line x1="600" y1="300" x2="800" y2="500" stroke="rgba(88,166,255,0.15)" stroke-width="1" />
+        <line x1="700" y1="400" x2="900" y2="480" stroke="rgba(88,166,255,0.2)" stroke-width="1" />
+
+        <!-- Additional cross connections -->
+        <line x1="200" y1="450" x2="400" y2="350" stroke="rgba(88,166,255,0.1)" stroke-width="1" />
+        <line x1="400" y1="350" x2="650" y2="500" stroke="rgba(88,166,255,0.12)" stroke-width="1" />
+        <line x1="150" y1="500" x2="700" y2="100" stroke="rgba(88,166,255,0.08)" stroke-width="1" />
+
+        <!-- Nodes with animation -->
+        <circle class="node" cx="150" cy="100" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="350" cy="200" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="500" cy="150" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="600" cy="300" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="700" cy="400" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="800" cy="500" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="900" cy="480" r="4" fill="rgba(88,166,255,0.5)" />
+        <circle class="node" cx="200" cy="450" r="4" fill="rgba(88,166,255,0.5)" />
+    </svg>
+
+    <div class="hero__image">
+        <img src="{{ SITEURL }}/images/profile.png" alt="Jorge Nacer" class="hero__image-img" />
+    </div>
+
+    <div class="hero__content">
+        <div class="hero__tag">Machine Learning Engineer · Data Scientist</div>
+        <h1 class="hero__title">Building <span class="hero__accent">high-performance</span> ML systems.</h1>
+        <p class="hero__sub">Combining scientific rigor with production-grade engineering. Specializing in infrastructure, NLP pipelines, and scalable systems.</p>
+        <div class="hero__cta">
+            <a href="{{ SITEURL }}/projects/" class="btn btn--primary">View Projects</a>
+            <a href="{{ SITEURL }}/about/" class="btn btn--ghost">About Me</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section__title">Technical Stack</h2>
+    <div class="bento">
+        <div class="bento__item">
+            <div class="bento__label">Languages & Runtimes</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Python</span>
+                <span class="bento__tag">SQL</span>
+                <span class="bento__tag">Bash</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">ML & Deep Learning</div>
+            <div class="bento__tags">
+                <span class="bento__tag">PyTorch</span>
+                <span class="bento__tag">Transformers</span>
+                <span class="bento__tag">MLflow</span>
+                <span class="bento__tag">Model Optimization</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Infrastructure</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Kubernetes</span>
+                <span class="bento__tag">Docker</span>
+                <span class="bento__tag">Terraform</span>
+                <span class="bento__tag">AWS/GCP</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Data Engineering</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Apache Spark</span>
+                <span class="bento__tag">Apache Kafka</span>
+                <span class="bento__tag">Airflow</span>
+                <span class="bento__tag">Pandas/Polars</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">Data Warehouses</div>
+            <div class="bento__tags">
+                <span class="bento__tag">Snowflake</span>
+                <span class="bento__tag">BigQuery</span>
+                <span class="bento__tag">Redis</span>
+            </div>
+        </div>
+
+        <div class="bento__item">
+            <div class="bento__label">DevOps & Quality</div>
+            <div class="bento__tags">
+                <span class="bento__tag">CI/CD</span>
+                <span class="bento__tag">Pytest</span>
+                <span class="bento__tag">Prometheus/Grafana</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section__title">Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-card__icon">🎮</div>
+            <div class="project-card__tags">
+                <span class="project-card__tag">AGPLv3</span>
+                <span class="project-card__tag">Open Source</span>
+            </div>
+            <h3 class="project-card__title">Synthesis Overthrust</h3>
+            <p class="project-card__description">Gamified learning platform with structured skill-tree covering professional tracks. Features spaced-repetition methodology inspired by RPG progression systems with six seniority tiers.</p>
+            <div class="project-card__stack">Tauri 2.0 · React · TypeScript · Python FastAPI</div>
+        </div>
+    </div>
+</section>
+
+{% if articles %}
+<section class="recent-posts">
+    <h2 class="section__title">Latest Writing</h2>
+    {% for article in articles[:3] %}
+    <a href="{{ SITEURL }}/blog/{{ article.slug }}/" class="post-preview">
+        <time class="post-preview__date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d, %Y') }}</time>
+        <h3 class="post-preview__title">{{ article.title }}</h3>
+        <p class="post-preview__summary">{{ article.summary|striptags|truncate(140) }}</p>
+    </a>
+    {% endfor %}
+</section>
+{% endif %}
+{% endblock %}
