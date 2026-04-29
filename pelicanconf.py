@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 # Load .env if present
 env_path = Path(__file__).parent / ".env"
@@ -72,6 +73,7 @@ PLUGIN_PATHS = ['.']
 EXTRA_CONTEXT = {
     "profile_email": os.getenv("PROFILE_EMAIL", "your.email@example.com"),
     "profile_location": os.getenv("PROFILE_LOCATION", "Hamburg, Germany"),
+    "timezone": ZoneInfo(TIMEZONE),
     "profile_status": os.getenv("PROFILE_STATUS", "Open to Opportunities"),
     # Social media links and usernames (for footer icons)
     "gh_username": os.getenv("GH_USERNAME", ""),
@@ -82,6 +84,7 @@ EXTRA_CONTEXT = {
     "linkedin_url": os.getenv("LINKEDIN_URL", ""),
     "discord_username": os.getenv("DISCORD_USERNAME", ""),
     "discord_url": os.getenv("DISCORD_URL", ""),
+    "calendly_url": os.getenv("CALENDLY_URL", ""),
 }
 
 # Ensure all Pelican variables are also in EXTRA_CONTEXT for consistent access
@@ -92,5 +95,5 @@ EXTRA_CONTEXT.update({
 })
 
 # Plugin to inject EXTRA_CONTEXT
-PLUGINS = ['plugins.context_processor']
+PLUGINS = ['plugins.context_processor', 'plugins.projects_data']
 PLUGIN_PATHS = ['.']

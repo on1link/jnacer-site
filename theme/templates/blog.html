@@ -1,31 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Blog — {{ SITENAME }}{% endblock %}
+{% set active_tab = 'blog.md' %}
+{% set active_section = 'blog' %}
+{% set crumb_path = '<strong>~/jnacer</strong> / blog / index.md' %}
 
 {% block content %}
-<section style="padding: 3rem 0;">
-    <div style="margin-bottom: 3rem;">
-        <h1 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem;">Writing</h1>
-        <p style="color: var(--text-dim); font-size: 1.05rem;">Technical articles on Machine Learning, data science,
-            some data engineering, and production systems.</p>
+<section class="cell" id="blog">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [*]:</span><span>blog/index.md</span></div>
+        <div>{{ articles|length if articles else 0 }} {{ 'entry' if (articles and articles|length == 1) else 'entries' }}</div>
     </div>
+    <div class="cell-body md">
+        <div class="h2-tag">## log</div>
+        <h2>Notes on ML systems, data, and production.</h2>
+        <p>
+            Technical articles on machine learning, NLP, data engineering, and operating
+            production systems at scale.
+        </p>
 
-    <div style="max-width: 760px;">
         {% if articles %}
-        {% for article in articles %}
-        <a href="{{ SITEURL }}/blog/{{ article.slug }}/" class="post-preview"
-            style="border-bottom: 1px solid var(--border); padding: 2rem 0; display: block; color: var(--text); text-decoration: none;">
-            <time class="post-preview__date" datetime="{{ article.date.isoformat() }}"
-                style="font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim);">{{
-                article.date.strftime('%B %d, %Y') }}</time>
-            <h2 style="font-size: 1.3rem; font-weight: 600; margin: 0.5rem 0 0.5rem 0; color: var(--text);">{{
-                article.title }}</h2>
-            <p style="color: var(--text-dim); font-size: 1rem; line-height: 1.6;">{{
-                article.summary|striptags|truncate(160) }}</p>
-        </a>
-        {% endfor %}
+        <div class="post-list">
+            {% for article in articles %}
+            <a href="{{ SITEURL }}/blog/{{ article.slug }}/" class="post-preview">
+                <time class="post-preview__date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%Y.%m.%d') }}</time>
+                <div>
+                    <h2 class="post-preview__title">{{ article.title }}</h2>
+                    <p class="post-preview__summary">{{ article.summary|striptags|truncate(180) }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
         {% else %}
-        <p style="color: var(--text-dim); font-size: 1rem; text-align: center; padding: 3rem;">No articles yet. Check
-            back soon.</p>
+        <div class="blog-empty">no articles yet — check back soon.</div>
         {% endif %}
     </div>
 </section>

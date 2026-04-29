@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
 
+{% set tab_map = {
+    'about': 'about.md',
+    'projects': 'projects.py',
+    'stack': 'stack.toml',
+    'contact': 'contact.yml',
+    'impressum': 'impressum.md',
+    'privacy': 'privacy.md'
+} %}
+{% set section_map = {
+    'about': 'about',
+    'projects': 'projects',
+    'stack': 'stack',
+    'contact': 'contact'
+} %}
+{% set active_tab = tab_map.get(page.slug, page.slug ~ '.md') %}
+{% set active_section = section_map.get(page.slug, page.slug) %}
+{% set crumb_path = '<strong>~/jnacer</strong> / ' ~ active_tab %}
+
 {% block content %}
-<article class="page">
-    <header class="page__header">
+<article class="cell">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [*]:</span><span>pages/{{ page.slug }}.md</span></div>
+        <div>markdown</div>
+    </div>
+    <div class="cell-body md page">
+        <div class="h2-tag">## {{ page.slug }}</div>
         <h1 class="page__title">{{ page.title }}</h1>
-    </header>
-    <div class="page__body">
-        {{ page.content }}
+        <div class="page__body">
+            {{ page.content }}
+        </div>
     </div>
 </article>
 {% endblock %}

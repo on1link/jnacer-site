@@ -1,19 +1,30 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+{% set active_tab = 'blog.md' %}
+{% set active_section = 'blog' %}
+{% set crumb_path = '<strong>~/jnacer</strong> / blog / ' ~ article.slug ~ '.md' %}
 
 {% block content %}
-<article class="article">
-    <header class="article__header">
-        <time class="article__date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+<article class="cell">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [*]:</span><span>blog/{{ article.slug }}.md</span></div>
+        <div>{{ article.date.strftime('%Y.%m.%d') }}</div>
+    </div>
+    <div class="cell-body md">
+        <div class="article__meta">
+            <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+            {% if article.category %}<span>// {{ article.category }}</span>{% endif %}
+        </div>
         <h1 class="article__title">{{ article.title }}</h1>
         {% if article.tags %}
         <div class="article__tags">
             {% for tag in article.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
         </div>
         {% endif %}
-    </header>
-    <div class="article__body">
-        {{ article.content }}
+        <div class="rule"></div>
+        <div class="article__body">
+            {{ article.content }}
+        </div>
     </div>
 </article>
 {% endblock %}

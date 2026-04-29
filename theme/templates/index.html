@@ -1,133 +1,321 @@
 {% extends "base.html" %}
 {% block title %}{{ SITENAME }}{% endblock %}
+{% set active_tab = 'README.md' %}
+{% set active_section = 'about' %}
+{% set crumb_path = '<strong>~/jnacer</strong> / README.md' %}
+
+{% set projects_page = (pages|selectattr('slug', 'equalto', 'projects')|list|first) %}
+{% set stack_page = (pages|selectattr('slug', 'equalto', 'stack')|list|first) %}
 
 {% block content %}
-<section class="hero">
-    <div class="hero__content">
-        <div class="hero__tag">Machine Learning Engineer · Data Scientist</div>
-        <h1 class="hero__title">Building <span class="hero__accent">high-performance</span> ML systems.</h1>
-        <p class="hero__sub">Combining scientific rigor with production-grade engineering. Specializing in infrastructure, NLP pipelines, and scalable systems.</p>
-        <div class="hero__cta">
-            <a href="{{ SITEURL }}/projects/" class="btn btn--primary">View Projects</a>
-            <a href="#" class="btn btn--ghost">Get Resume (PDF)</a>
-        </div>
+
+<!-- ===== hero cell ===== -->
+<section class="cell" id="about">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [1]:</span><span>cells/00_intro.py</span></div>
+        <div>python 3.12 · idle</div>
     </div>
-</section>
-
-<section class="stack">
-    <h2 class="stack__title">Technical Stack</h2>
-    <div class="bento">
-        <div class="bento__item">
-            <div class="bento__label">Languages</div>
-            <div class="bento__tags">
-                <span class="bento__tag">Python</span>
-                <span class="bento__tag">Rust</span>
-                <span class="bento__tag">Bash</span>
-            </div>
-        </div>
-
-        <div class="bento__item">
-            <div class="bento__label">Core ML & Data</div>
-            <div class="bento__tags">
-                <span class="bento__tag">PyTorch</span>
-                <span class="bento__tag">Snowflake</span>
-                <span class="bento__tag">Spark</span>
-                <span class="bento__tag">Pandas</span>
-            </div>
-        </div>
-
-        <div class="bento__item">
-            <div class="bento__label">Platform</div>
-            <div class="bento__tags">
-                <span class="bento__tag">Kubernetes</span>
-                <span class="bento__tag">Docker</span>
-                <span class="bento__tag">AWS</span>
-            </div>
-        </div>
-
-        <div class="bento__item">
-            <div class="bento__label">Streaming & Ops</div>
-            <div class="bento__tags">
-                <span class="bento__tag">Kafka</span>
-                <span class="bento__tag">MLflow</span>
-                <span class="bento__tag">Airflow</span>
-            </div>
-        </div>
-
-        <div class="bento__item bento__item--wide">
-            <div class="bento__label">Open Source Contributions</div>
-            <p style="font-size: 0.95rem; color: var(--text-dim); margin-top: 0.75rem;">Active contributor to ML infrastructure and data engineering projects. See GitHub for details on recent work.</p>
-            <a href="https://github.com/on1link" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: underline;">→ View on GitHub</a>
-        </div>
-    </div>
-</section>
-
-<section class="projects">
-    <h2 class="stack__title">Featured Project</h2>
-
-    <div class="project">
-        <div class="project__diagram">
-            <svg viewBox="0 0 300 300" style="width: 100%; max-width: 200px; opacity: 0.6;">
-                <defs>
-                    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.3" />
-                        <stop offset="100%" style="stop-color:currentColor;stop-opacity:0.1" />
-                    </linearGradient>
-                </defs>
-                <!-- Tree structure -->
-                <circle cx="150" cy="50" r="20" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
-                <text x="150" y="55" text-anchor="middle" font-size="10" fill="currentColor">T1</text>
-
-                <circle cx="90" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
-                <text x="90" y="135" text-anchor="middle" font-size="9" fill="currentColor">T2</text>
-
-                <circle cx="150" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
-                <text x="150" y="135" text-anchor="middle" font-size="9" fill="currentColor">T3</text>
-
-                <circle cx="210" cy="130" r="18" fill="url(#skillGrad)" stroke="currentColor" stroke-width="2" />
-                <text x="210" y="135" text-anchor="middle" font-size="9" fill="currentColor">T4</text>
-
-                <!-- Connections -->
-                <line x1="140" y1="70" x2="100" y2="115" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
-                <line x1="150" y1="70" x2="150" y2="112" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
-                <line x1="160" y1="70" x2="200" y2="115" stroke="currentColor" stroke-width="1.5" opacity="0.4" />
-
-                <!-- Progression nodes -->
-                <circle cx="60" cy="200" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
-                <circle cx="120" cy="220" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
-                <circle cx="180" cy="220" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
-                <circle cx="240" cy="200" r="12" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
-            </svg>
-        </div>
-        <div class="project__content">
-            <h3>Synthesis Overthrust</h3>
-            <div class="project__stack">Tauri 2.0 · Rust · React · TypeScript · FastAPI</div>
-            <p class="project__description">Gamified learning platform with structured skill-tree covering complete ML/Data roles. Organizes skills across professional tracks with spaced-repetition methodology inspired by RPG progression systems. Features six seniority tiers with prerequisite dependencies and milestone celebrations.</p>
-            <div class="project__metrics">
-                <div class="project__metric">
-                    <div class="project__metric-label">Tracks</div>
-                    <div class="project__metric-value">6 Tiers (T1-T5)</div>
-                </div>
-                <div class="project__metric">
-                    <div class="project__metric-label">License</div>
-                    <div class="project__metric-value">AGPLv3</div>
+    <div class="cell-body hero">
+        <div class="hero-grid">
+            <div class="hero-grid__portrait">
+                <div class="hero-portrait" aria-label="Profile picture">
+                    <span class="frame-tag">portrait.png</span>
+                    <img src="{{ SITEURL }}/images/profile.png" alt="{{ AUTHOR }}" loading="eager">
+                    <div class="frame-status">
+                        <span><span class="dot"></span>online</span>
+                        <span>1:1</span>
+                    </div>
                 </div>
             </div>
-            <a href="https://github.com/on1link/SynthesisOverthrust" target="_blank" rel="noopener" class="project__link">View on GitHub →</a>
+
+            <div class="hero-grid__intro">
+                <div class="kicker"># ~/jnacer</div>
+                <h1>
+                    <span class="name">Jorge Nacer.</span>
+                    <span class="muted">Data Scientist &amp; ML Engineer shipping production ML systems.</span>
+                </h1>
+                <p>
+                    Hamburg-based. I build predictive systems end-to-end,
+                    from framing the business problem to the model in production and the
+                    alert that pages when it drifts. Happiest in the seam between research
+                    code and reliable infrastructure.
+                </p>
+                <div class="pill-row">
+                    <span class="pill"><span class="dot"></span>{{ profile_status|lower }}</span>
+                    <span class="pill">py · pytorch · k8s · aws/gcp</span>
+                    <span class="pill">ES (Native) · EN (C1) · DE (A2)</span>
+                </div>
+                <div class="cta">
+                    <a href="#contact" class="btn btn--primary">Get in touch</a>
+                    <a href="{{ SITEURL }}/projects/" class="btn">Browse projects</a>
+                    <a href="{{ SITEURL }}/Nacer-Jorge-CV.pdf" class="btn" download>↓ cv.pdf</a>
+                </div>
+            </div>
+
+            <div class="demo hero-grid__demo" aria-label="Live gradient descent demo">
+                <h4>
+                    <span>fig.01 &nbsp; loss surface · SGD trajectory</span>
+                    <span class="live">live</span>
+                </h4>
+                <svg id="demo-svg" viewBox="0 0 320 200" preserveAspectRatio="none" aria-hidden="true"></svg>
+                <div class="stats">
+                    <div>step <b id="d-step">0</b></div>
+                    <div>loss <b id="d-loss">-</b></div>
+                    <div>lr <b>3e-3</b></div>
+                    <div>opt <b>sgd+mom</b></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-{% if articles %}
-<section class="recent-posts">
-    <h2 class="stack__title">Latest Writing</h2>
-    {% for article in articles[:4] %}
-    <a href="{{ SITEURL }}/{{ article.url }}" class="post-preview">
-        <time class="post-preview__date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d, %Y') }}</time>
-        <h3 class="post-preview__title">{{ article.title }}</h3>
-        <p class="post-preview__summary">{{ article.summary|striptags|truncate(140) }}</p>
-    </a>
-    {% endfor %}
+<!-- ===== projects ===== -->
+<section class="cell" id="projects">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [2]:</span><span>cells/01_projects.py</span></div>
+        <div>featured</div>
+    </div>
+    <div class="cell-body md">
+        <div class="h2-tag">## projects</div>
+        <h2>Selected work</h2>
+        <p>A mix of shipped systems and open-source tools. Click any card to expand.</p>
+
+        <div class="projects">
+            {% for p in projects_list %}
+            <article class="proj">
+                {% if p.id %}<div class="proj__id">{{ p.id }}</div>{% endif %}
+                <h3>{% if p.repo %}<a href="{{ p.repo }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{
+                    p.title }}{% endif %}</h3>
+                {% if p.status %}<div class="proj__status">{{ p.status }}</div>{% endif %}
+                {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+                {% if p.stack_list %}
+                <div class="proj__stack">
+                    {% for s in p.stack_list %}<span>{{ s }}</span>{% endfor %}
+                </div>
+                {% endif %}
+                {% if p.metrics_list %}
+                <div class="proj__metrics">
+                    {% for k, v in p.metrics_list %}<span>{{ k }} <b>{{ v }}</b></span>{% endfor %}
+                </div>
+                {% endif %}
+                {% if p.problem or p.approach or p.built %}
+                <button class="proj__more" type="button">expand</button>
+                <div class="proj__detail">
+                    {% if p.problem %}<b>Problem.</b> {{ p.problem }}<br><br>{% endif %}
+                    {% if p.approach %}<b>Approach.</b> {{ p.approach }}<br><br>{% endif %}
+                    {% if p.built %}<b>What I built.</b> {{ p.built }}{% endif %}
+                </div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </div>
 </section>
-{% endif %}
+
+<!-- ===== stack ===== -->
+<section class="cell" id="stack">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [3]:</span><span>cells/02_stack.py</span></div>
+        <div>stack.toml</div>
+    </div>
+    <div class="cell-body md">
+        <div class="h2-tag">## stack</div>
+        <h2>Tools I reach for</h2>
+        <p>Opinions earned the hard way. I care more about boring-correctness than novelty - but I'll swap any of these
+            for a better fit.</p>
+
+        <div class="stack-grid">
+            <div class="k">languages</div>
+            <div class="v"><b>Python</b> (primary, ML/backend, NumPy/SciPy, Pydantic, AsyncIO) · <b>SQL</b> (window
+                funcs, CTEs, optimization) · <b>Bash</b> (automation, CI/CD) · <b>C++</b></div>
+
+            <div class="k">ml / dl</div>
+            <div class="v"><b>PyTorch</b> (training, fine-tuning) · <b>MLflow</b> (tracking, registry) · TensorFlow ·
+                scikit-learn, XGBoost, LightGBM · RNN / LSTM · Optuna · Causal Inference · HF <b>Transformers</b> (NLP,
+                RAG, LLM fine-tuning) · <b>Model Optimization</b> (ONNX, TensorRT, quantization)</div>
+
+            <div class="k">data</div>
+            <div class="v"><b>Apache Spark</b> (PySpark) · <b>Apache Kafka</b> (streaming) · <b>Polars</b>, pandas,
+                NumPy, SciPy · <b>Airflow</b> orchestration · dbt · ETL/ELT</div>
+
+            <div class="k">platforms</div>
+            <div class="v"><b>Kubernetes</b> (+ Kubeflow) · Docker · Terraform · <b>AWS</b> (SageMaker, S3, EC2, Lambda,
+                Athena) · <b>GCP</b> (Vertex AI, BigQuery, Cloud Run, GCS)</div>
+
+            <div class="k">ml ops</div>
+            <div class="v"><b>MLflow</b> tracking + registry · Airflow · CI/CD (GitHub Actions, GitLab CI) · Pydantic
+                contracts</div>
+
+            <div class="k">databases</div>
+            <div class="v"><b>Snowflake</b> / <b>BigQuery</b> (ELT, analytics, feature stores) · <b>Redis</b> (real-time
+                features) · <b>DynamoDB</b> (metadata)</div>
+
+            <div class="k">vector / llm</div>
+            <div class="v"><b>ChromaDB</b>, Pinecone · RAG and agentic workflows · fine-tuning LLMs</div>
+
+            <div class="k">observability</div>
+            <div class="v"><b>Prometheus</b> + Grafana · Cloud Monitoring · structured logging · model + data drift
+                alerts</div>
+
+            <div class="k">development ecosystem</div>
+            <div class="v">Ruff, Black, Mypy, Pytest · Git (branching, collaborative workflows) · type-first,
+                test-first, review-first · design patterns</div>
+        </div>
+
+        <div class="rule"></div>
+
+        <pre class="code" aria-hidden="true"><span class="cm"># how I actually pick tools</span>
+<span class="kw">def</span> <span class="nm">choose</span>(problem):
+    <span class="kw">if</span> problem.is_novel:
+        <span class="kw">return</span> <span class="st">"proven tool, novel composition"</span>
+    <span class="kw">if</span> problem.is_standard:
+        <span class="kw">return</span> <span class="st">"the team's most-loved standard tool"</span>
+    <span class="kw">return</span> <span class="st">"Ops transparent, optimized for fast debugging at 3am"</span></pre>
+    </div>
+</section>
+
+<!-- ===== experience ===== -->
+<section class="cell" id="experience">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [4]:</span><span>cells/03_timeline.py</span></div>
+        <div>experience.log</div>
+    </div>
+    <div class="cell-body md">
+        <div class="h2-tag">## timeline</div>
+        <h2>Where I've been</h2>
+
+        <div class="tl">
+            <div class="row current">
+                <div class="when">11.2024 - 04.2025 · Hamburg (Remote)</div>
+                <div class="what">Senior Data Scientist <em>- Leprcon</em></div>
+                <div class="where">Architected data-integrity and analysis pipelines for energy analytics. Anomaly
+                    detection via
+                    statistical validation (Pandas, Statsmodels); hypothesis testing with scikit-learn to mitigate
+                    technical and business risks; translated statistical findings into actionable recommendations.</div>
+                <div class="chips"><span>Pandas</span><span>Statsmodels</span><span>scikit-learn</span><span>Energy
+                        analytics</span></div>
+            </div>
+            <div class="row">
+                <div class="when">01.2023 - 02.2024 · Santiago (Remote)</div>
+                <div class="what">Senior Data Scientist <em>- Walmart Chile</em></div>
+                <div class="where">MLOps for customer analytics: multi-container Docker/Kubernetes pipelines on Vertex
+                    AI (GCP), monthly CLV batch predictions with LightGBM, loyalty budget optimization. Maintained 99.9%
+                    data-quality SLOs via automated BigQuery SQL and Cloud Monitoring.</div>
+                <div class="chips"><span>GCP / Vertex
+                        AI</span><span>Kubernetes</span><span>LightGBM</span><span>BigQuery</span><span>MLOps</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="when">07.2020 - 12.2022 · Santiago</div>
+                <div class="what">Data Scientist <em>- Walmart Chile</em></div>
+                <div class="where">Built LightGBM churn models; engineered K-means and DBSCAN customer segmentations;
+                    ran A/B testing with Statsmodels/SciPy and diff-in-diff to drive marketing ROI.</div>
+                <div class="chips"><span>LightGBM</span><span>K-means / DBSCAN</span><span>A/B
+                        testing</span><span>Causal inference</span></div>
+            </div>
+            <div class="row">
+                <div class="when">2018 - 2019 · Valparaíso</div>
+                <div class="what">M.Sc.-level coursework, Informatics Engineering <em>- UTFSM</em></div>
+                <div class="where">Post-graduate coursework in Machine Learning and Deep Learning; completed all
+                    advanced coursework and examinations with a focus on scientific research and engineering theory.
+                </div>
+                <div class="chips"><span>ML</span><span>Deep Learning</span><span>Research</span></div>
+            </div>
+            <div class="row">
+                <div class="when">09.2016 - 02.2018 · Santiago</div>
+                <div class="what">Software Engineer <em>- Qservus</em></div>
+                <div class="where">Production-ready REST APIs with Django, SQL, and Elasticsearch. Webpay integrations
+                    via Celery + Redis for async processing. Django web-app maintenance and Git-driven team workflows.
+                </div>
+                <div class="chips"><span>Django</span><span>Elasticsearch</span><span>Celery / Redis</span></div>
+            </div>
+            <div class="row">
+                <div class="when">03.2015 - 09.2016 · Santiago</div>
+                <div class="what">Backend &amp; Frontend Developer <em>- Jumpitt Labs</em></div>
+                <div class="where">Backend for fitness and retail platforms in Python (Django) and PHP (Laravel);
+                    RESTful APIs integrating SQL DBs; end-to-end AWS deployments on EC2/S3 with Docker and Git
+                    versioning.</div>
+                <div class="chips"><span>Django / Laravel</span><span>AWS EC2 /
+                        S3</span><span>Docker</span><span>Vue.js</span></div>
+            </div>
+            <div class="row">
+                <div class="when">- 2014 · Valparaíso</div>
+                <div class="what">Informatics Engineering<em>- UTFSM</em></div>
+                <div class="where">6-year Engineering degree; focused on AI and
+                    quantitative methods; includes B.Sc.-equivalent in Computer Science.</div>
+                <div class="chips"><span>CS</span><span>AI</span><span>Quantitative methods</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== contact ===== -->
+<section class="cell" id="contact">
+    <div class="cell-head">
+        <div class="cell-head__left"><span class="cell-head__in">In [5]:</span><span>cells/04_contact.py</span></div>
+        <div>contact.yml</div>
+    </div>
+    <div class="cell-body md">
+        <div class="h2-tag">## contact</div>
+        <h2>From prototype to resilient infrastructure</h2>
+        <p>
+            Best for production ML systems, forecasting, RAG and retrieval, MLOps works.
+            Whether you need end-to-end development or a "second opinion",
+            I offer a pragmatic, engineering-first perspective. I reply inside
+            48 hours, and I'll tell you honestly if I'm not the right fit.
+        </p>
+
+        <div class="contact">
+            {% if calendly_url %}
+            <div class="contact__row">
+                <div>
+                    <div class="k">calendly</div>
+                    <div class="v">book a 30-min intro call</div>
+                </div>
+                <a class="copy" href="{{ calendly_url }}" target="_blank" rel="noopener">schedule</a>
+            </div>
+            {% endif %}
+            <div class="contact__row">
+                <div>
+                    <div class="k">email</div>
+                    <div class="v">{{ profile_email }}</div>
+                </div>
+                <button class="copy" data-copy="{{ profile_email }}" type="button">copy</button>
+            </div>
+            {% if gh_url %}
+            <div class="contact__row">
+                <div>
+                    <div class="k">github</div>
+                    <div class="v">@{{ gh_username }}</div>
+                </div>
+                <a class="copy" href="{{ gh_url }}" target="_blank" rel="noopener">open</a>
+            </div>
+            {% endif %}
+            {% if linkedin_url %}
+            <div class="contact__row">
+                <div>
+                    <div class="k">linkedin</div>
+                    <div class="v">/in/{{ linkedin_username }}</div>
+                </div>
+                <a class="copy" href="{{ linkedin_url }}" target="_blank" rel="noopener">open</a>
+            </div>
+            {% endif %}
+            <div class="contact__row">
+                <div>
+                    <div class="k">gitlab</div>
+                    <div class="v">@{{ gl_username }}</div>
+                </div>
+                <a class="copy" href="{{ gl_url }}" target="_blank" rel="noopener">open</a>
+            </div>
+            <div class="contact__row">
+                <div>
+                    <div class="k">cv</div>
+                    <div class="v">Nacer-Jorge-CV.pdf</div>
+                </div>
+                <a class="copy" href="{{ SITEURL }}/Nacer-Jorge-CV.pdf" download>download</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

@@ -69,3 +69,5 @@ yarn-error.log
 # Local development
 local_settings.py
 settings_local.py
+.env.example
+jnacer-site.code-workspace
