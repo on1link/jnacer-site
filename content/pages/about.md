@@ -27,4 +27,4 @@ I'm particularly interested in **ML systems design** and **scalable pipelines**,
 
 ## Background
 
-Originally from Chile, I bring a multidisciplinary perspective shaped by software engineering foundations and a deep curiosity for how systems, both technical and human, work. Since my early studies, I've drawn to study and work with AI systems, particulary Machine Learning and Metaheuristics. Outside of work, I'm interested in ML education design, community initiatives.
+Originally from Chile, I bring a multidisciplinary perspective shaped by software engineering foundations and a deep curiosity for how systems, both technical and human, work. Since my early studies, I've drawn to study and work with AI systems, particulary Machine Learning and Deep Learning. Outside of work, I'm interested in ML education design, and community initiatives.
