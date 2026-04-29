@@ -89,31 +89,91 @@
         syncSide();
     }
 
-    /* ===== fake ⌘K toast ===== */
-    window.addEventListener('keydown', (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key && e.key.toLowerCase() === 'k') {
-            e.preventDefault();
-            const t = document.createElement('div');
-            t.textContent = 'command palette — wire me up in the real build';
-            Object.assign(t.style, {
-                position: 'fixed',
-                top: '24px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'var(--panel)',
-                color: 'var(--fg)',
-                padding: '10px 16px',
-                border: '1px solid var(--line-2)',
-                borderRadius: '8px',
-                fontFamily: 'var(--mono)',
-                fontSize: '12px',
-                zIndex: 200,
-                boxShadow: '0 10px 40px rgba(0,0,0,.4)',
+    /* ===== ⌘K command palette ===== */
+    const cmdkBackdrop = document.getElementById('cmdk-backdrop');
+    const cmdkDialog = document.getElementById('cmdk');
+    const cmdkInput = document.getElementById('cmdk-input');
+    const cmdkList = document.getElementById('cmdk-list');
+    const cmdkEmpty = document.getElementById('cmdk-empty');
+
+    if (cmdkBackdrop && cmdkDialog && cmdkInput && cmdkList) {
+        const pages = [
+            { label: 'README.md', kind: 'page', url: '/' },
+            { label: 'about.md', kind: 'page', url: '/about/' },
+            { label: 'projects.py', kind: 'page', url: '/projects/' },
+            { label: 'blog/', kind: 'page', url: '/blog/' },
+            { label: 'stack.toml', kind: 'page', url: '/stack/' },
+            { label: 'contact.yml', kind: 'section', url: '/#contact' },
+            { label: 'experience.log', kind: 'section', url: '/#experience' },
+            { label: 'impressum.md', kind: 'legal', url: '/impressum/' },
+            { label: 'privacy.md', kind: 'legal', url: '/privacy/' },
+            { label: 'cv.pdf', kind: 'file', url: '/Nacer-Jorge-CV.pdf' },
+        ];
+
+        let activeIdx = 0;
+        let filtered = [];
+
+        const render = (query) => {
+            const q = query.toLowerCase().trim();
+            filtered = q ? pages.filter((p) => p.label.toLowerCase().includes(q)) : pages.slice();
+            cmdkList.innerHTML = '';
+            filtered.forEach((p, i) => {
+                const li = document.createElement('li');
+                li.className = 'cmdk__item' + (i === 0 ? ' is-active' : '');
+                li.dataset.idx = i;
+                li.innerHTML = '<span>' + p.label + '</span><span class="cmdk__item-kind">' + p.kind + '</span>';
+                cmdkList.appendChild(li);
             });
-            document.body.appendChild(t);
-            setTimeout(() => t.remove(), 1600);
-        }
-    });
+            activeIdx = 0;
+            if (cmdkEmpty) cmdkEmpty.hidden = filtered.length > 0;
+        };
+
+        const open = () => {
+            cmdkBackdrop.classList.add('is-open');
+            cmdkDialog.classList.add('is-open');
+            cmdkInput.value = '';
+            render('');
+            cmdkInput.focus();
+        };
+
+        const close = () => {
+            cmdkBackdrop.classList.remove('is-open');
+            cmdkDialog.classList.remove('is-open');
+        };
+
+        const navigate = (idx) => {
+            if (filtered[idx]) {
+                close();
+                window.location.href = filtered[idx].url;
+            }
+        };
+
+        const setActive = (idx) => {
+            const items = cmdkList.querySelectorAll('.cmdk__item');
+            items.forEach((el, i) => el.classList.toggle('is-active', i === idx));
+            activeIdx = idx;
+            if (items[idx]) items[idx].scrollIntoView({ block: 'nearest' });
+        };
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                cmdkDialog.classList.contains('is-open') ? close() : open();
+            }
+            if (!cmdkDialog.classList.contains('is-open')) return;
+            if (e.key === 'Escape') { close(); return; }
+            if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIdx + 1, filtered.length - 1)); }
+            if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIdx - 1, 0)); }
+            if (e.key === 'Enter') { e.preventDefault(); navigate(activeIdx); }
+        });
+
+        cmdkInput.addEventListener('input', () => render(cmdkInput.value));
+        cmdkBackdrop.addEventListener('click', close);
+        cmdkList.addEventListener('click', (e) => {
+            const item = e.target.closest('.cmdk__item');
+            if (item) navigate(Number(item.dataset.idx));
+        });
+    }
 
     /* ===== hero: live SGD-on-a-surface demo ===== */
     const svg = document.getElementById('demo-svg');
