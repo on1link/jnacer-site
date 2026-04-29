@@ -17,7 +17,8 @@
 } %}
 {% set active_tab = tab_map.get(page.slug, page.slug ~ '.md') %}
 {% set active_section = section_map.get(page.slug, page.slug) %}
-{% set crumb_path = '<strong>~/jnacer</strong> / ' ~ active_tab %}
+{% set crumb_prefix = '~/jnacer' %}
+{% set crumb_suffix = active_tab %}
 
 {% block content %}
 <article class="cell">

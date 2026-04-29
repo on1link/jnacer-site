@@ -20,7 +20,8 @@
 <body data-theme="dark">
     {% set active_tab = active_tab|default('README.md') %}
     {% set active_section = active_section|default('about') %}
-    {% set crumb_path = crumb_path|default('~/jnacer / README.md') %}
+    {% set crumb_prefix = crumb_prefix|default('~/jnacer') %}
+    {% set crumb_suffix = crumb_suffix|default('README.md') %}
 
     <div class="shell">
         <button class="shell__hamburger" aria-label="Toggle explorer" aria-expanded="false">
@@ -115,7 +116,7 @@
             </div>
 
             <div class="crumbs">
-                <div class="crumbs__path">{{ crumb_path|safe }}</div>
+                <div class="crumbs__path"><strong>{{ crumb_prefix }}</strong> / {{ crumb_suffix }}</div>
                 <div class="crumbs__right">
                     <span class="crumbs__kbd">⌘ <kbd>K</kbd> search</span>
                     <span id="clock">— : —</span>

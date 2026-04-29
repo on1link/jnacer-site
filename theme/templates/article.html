@@ -2,7 +2,8 @@
 {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
 {% set active_tab = 'blog.md' %}
 {% set active_section = 'blog' %}
-{% set crumb_path = '<strong>~/jnacer</strong> / blog / ' ~ article.slug ~ '.md' %}
+{% set crumb_prefix = '~/jnacer' %}
+{% set crumb_suffix = 'blog / ' ~ article.slug ~ '.md' %}
 
 {% block content %}
 <article class="cell">

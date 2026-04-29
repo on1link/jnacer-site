@@ -2,7 +2,8 @@
 {% block title %}{{ SITENAME }}{% endblock %}
 {% set active_tab = 'README.md' %}
 {% set active_section = 'about' %}
-{% set crumb_path = '<strong>~/jnacer</strong> / README.md' %}
+{% set crumb_prefix = '~/jnacer' %}
+{% set crumb_suffix = 'README.md' %}
 
 {% set projects_page = (pages|selectattr('slug', 'equalto', 'projects')|list|first) %}
 {% set stack_page = (pages|selectattr('slug', 'equalto', 'stack')|list|first) %}

@@ -34,6 +34,7 @@ site/
 .env
 .env.local
 .env.*.local
+secrets.env
 
 # OS
 Thumbs.db
@@ -69,5 +70,4 @@ yarn-error.log
 # Local development
 local_settings.py
 settings_local.py
-.env.example
 jnacer-site.code-workspace
