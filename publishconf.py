@@ -5,7 +5,7 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 # Production configuration - use environment variables
-SITEURL = os.getenv("PRODUCTION_DOMAIN", "https://yourdomain.xyz")
+SITEURL = os.getenv("PRODUCTION_DOMAIN", "https://jnacer.dev")
 RELATIVE_URLS = False
 
 # Feed configuration
