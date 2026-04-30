@@ -51,6 +51,7 @@ jobs:
           LINKEDIN_URL=${{ secrets.LINKEDIN_URL }}
           DISCORD_USERNAME=${{ secrets.DISCORD_USERNAME }}
           DISCORD_URL=${{ secrets.DISCORD_URL }}
+          CALENDLY_URL=${{ secrets.CALENDLY_URL }}
 
           # Legal
           BUSINESS_NAME=${{ secrets.BUSINESS_NAME }}
